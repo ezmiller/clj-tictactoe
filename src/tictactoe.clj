@@ -122,6 +122,9 @@
   (println "O's move:")
   (get-valid-input))
 
+(defn O-get-computer-move []
+  (rand-nth (range 1 10)))
+
 (defn get-next-to-play []
   (@game :next-to-play))
 
@@ -143,8 +146,7 @@
           (update-board! X (X-get-move))
           (set-next-to-play! O))
       2 (do
-
-          (update-board! O (O-get-move))
+          (update-board! O (O-get-computer-move))
           (set-next-to-play! X)))
       (clear-screen))
   (case (and-the-winner-is (@game :board))
